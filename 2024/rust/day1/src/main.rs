@@ -18,6 +18,9 @@ fn main() {
     a.sort_unstable();
     b.sort_unstable();
 
-    let result: i32 = zip(a, b).map(|v| (v.0 - v.1).abs()).sum();
-    println!("Result: {}", result)
+    let result: i32 = zip(&a, &b).map(|v| (v.0 - v.1).abs()).sum();
+    println!("Result part 1: {}", result);
+
+    let result2: i32 = a.iter().map(|v| v * b.iter().filter(|&n| *n == *v).count() as i32).sum();
+    println!("Result part 2: {}", result2);
 }
